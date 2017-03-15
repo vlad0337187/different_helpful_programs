@@ -3,7 +3,7 @@
 
 import os, os.path
 import sys  # for exiting from program
-#import shutils  # for removing directories with all it's folders
+import shutil  # for removing directories with all it's folders
 
 
 def create_folder(folder):
@@ -21,7 +21,8 @@ def create_folder(folder):
 			inp = input()
 			
 			if inp == 'Y':
-				recursively_remove_folder(folder)
+				#recursively_remove_folder(folder)
+				shutil.rmtree(folder)
 				os.makedirs(folder)
 				print('Folder "{0}" was successfully created'.format(folder))
 				break
@@ -52,7 +53,7 @@ def create_folder(folder):
 
 
 
-def recursively_remove_folder(item):
+def recursively_remove_folder(item):  # not needed any more, shutil module is used
 	if os.path.isdir(item):
 		for i in os.listdir(item):
 			recursively_remove_folder(os.path.join(item, i))
